@@ -1,0 +1,6 @@
+program ite ::
+var a : int;
+{
+    read a;
+    if (a>0) then {write (a);} else {write ~a;} endif;
+}

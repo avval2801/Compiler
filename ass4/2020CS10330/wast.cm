@@ -1,0 +1,17 @@
+Library
+    structure Wast
+    structure WastLrVals
+    structure WastParser
+    structure DataTypes
+is
+    datatypes.sml
+    wast.lex
+    wast.yacc:MLYacc
+    glue.sml
+    while_ast.sml
+    $/basis.cm
+    $/ml-yacc-lib.cm
+    $smlnj/compiler/compiler.cm
+    $/smlnj-lib.cm 
+    test.sml
+    

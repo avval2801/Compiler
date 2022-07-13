@@ -1,0 +1,8 @@
+program AP::
+    var a, d, n: int;
+{
+    read a;
+    read d;
+    read n;
+    write (n*(2*a+(n-1)*d))/2;
+}

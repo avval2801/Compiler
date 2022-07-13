@@ -1,0 +1,7 @@
+program start ::
+var n, f, c : int;
+{
+    read n;
+    f := 1;
+    while (c<>n) do {f:= f*(c+1); c:=c+1;} endwh;
+}

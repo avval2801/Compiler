@@ -1,0 +1,1929 @@
+17 reduce/reduce conflicts
+
+error:  state 62: reduce/reduce conflict between rule 39 and rule 38 on DOO
+error:  state 62: reduce/reduce conflict between rule 39 and rule 38 on THENN
+error:  state 62: reduce/reduce conflict between rule 39 and rule 38 on NEQQ
+error:  state 62: reduce/reduce conflict between rule 39 and rule 38 on GEQQ
+error:  state 62: reduce/reduce conflict between rule 39 and rule 38 on GTT
+error:  state 62: reduce/reduce conflict between rule 39 and rule 38 on EQQ
+error:  state 62: reduce/reduce conflict between rule 39 and rule 38 on LEQQ
+error:  state 62: reduce/reduce conflict between rule 39 and rule 38 on LTT
+error:  state 62: reduce/reduce conflict between rule 39 and rule 38 on ANDD
+error:  state 62: reduce/reduce conflict between rule 39 and rule 38 on ORR
+error:  state 62: reduce/reduce conflict between rule 39 and rule 38 on RPAR
+error:  state 62: reduce/reduce conflict between rule 39 and rule 38 on MODD
+error:  state 62: reduce/reduce conflict between rule 39 and rule 38 on DIVV
+error:  state 62: reduce/reduce conflict between rule 39 and rule 38 on MUL
+error:  state 62: reduce/reduce conflict between rule 39 and rule 38 on MINUSS
+error:  state 62: reduce/reduce conflict between rule 39 and rule 38 on PLUSS
+error:  state 62: reduce/reduce conflict between rule 39 and rule 38 on SCOLON
+
+state 0:
+
+	begin : . PROGRAMM IDE CONS block 
+
+	PROGRAMM	shift 1
+
+	begin	goto 91
+
+	.	error
+
+
+state 1:
+
+	begin : PROGRAMM . IDE CONS block 
+
+	IDE	shift 2
+
+
+	.	error
+
+
+state 2:
+
+	begin : PROGRAMM IDE . CONS block 
+
+	CONS	shift 3
+
+
+	.	error
+
+
+state 3:
+
+	begin : PROGRAMM IDE CONS . block 
+
+	LBRACE	reduce by rule 3
+	VARR	shift 7
+
+	block	goto 6
+	declrlist	goto 5
+	declr	goto 4
+
+	.	error
+
+
+state 4:
+
+	declrlist : declr . declrlist 
+
+	LBRACE	reduce by rule 3
+	VARR	shift 7
+
+	declrlist	goto 8
+	declr	goto 4
+
+	.	error
+
+
+state 5:
+
+	block : declrlist . LBRACE cmds RBRACE 
+
+	LBRACE	shift 9
+
+
+	.	error
+
+
+state 6:
+
+	begin : PROGRAMM IDE CONS block .  (reduce by rule 0)
+
+	EOF	reduce by rule 0
+
+
+	.	error
+
+
+state 7:
+
+	declr : VARR . varlist COLON typ SCOLON 
+
+	IDE	shift 12
+
+	varlist	goto 11
+	variable	goto 10
+
+	.	error
+
+
+state 8:
+
+	declrlist : declr declrlist .  (reduce by rule 2)
+
+	LBRACE	reduce by rule 2
+
+
+	.	error
+
+
+state 9:
+
+	block : declrlist LBRACE . cmds RBRACE 
+
+	IDE	shift 12
+	RBRACE	reduce by rule 10
+	READD	shift 19
+	WRITEE	shift 18
+	IFF	shift 17
+	WHILEE	shift 16
+
+	cmds	goto 15
+	cmdd	goto 14
+	variable	goto 13
+
+	.	error
+
+
+state 10:
+
+	varlist : variable . COMMA varlist 
+	varlist : variable .  (reduce by rule 8)
+
+	COLON	reduce by rule 8
+	COMMA	shift 20
+
+
+	.	error
+
+
+state 11:
+
+	declr : VARR varlist . COLON typ SCOLON 
+
+	COLON	shift 21
+
+
+	.	error
+
+
+state 12:
+
+	variable : IDE .  (reduce by rule 36)
+
+	COLON	reduce by rule 36
+	SCOLON	reduce by rule 36
+	COMMA	reduce by rule 36
+	ASSIGN	reduce by rule 36
+	PLUSS	reduce by rule 36
+	MINUSS	reduce by rule 36
+	MUL	reduce by rule 36
+	DIVV	reduce by rule 36
+	MODD	reduce by rule 36
+	RPAR	reduce by rule 36
+	ORR	reduce by rule 36
+	ANDD	reduce by rule 36
+	LTT	reduce by rule 36
+	LEQQ	reduce by rule 36
+	EQQ	reduce by rule 36
+	GTT	reduce by rule 36
+	GEQQ	reduce by rule 36
+	NEQQ	reduce by rule 36
+	THENN	reduce by rule 36
+	DOO	reduce by rule 36
+
+
+	.	error
+
+
+state 13:
+
+	cmdd : variable . ASSIGN exp 
+
+	ASSIGN	shift 22
+
+
+	.	error
+
+
+state 14:
+
+	cmds : cmdd . SCOLON cmds 
+
+	SCOLON	shift 23
+
+
+	.	error
+
+
+state 15:
+
+	block : declrlist LBRACE cmds . RBRACE 
+
+	RBRACE	shift 24
+
+
+	.	error
+
+
+state 16:
+
+	cmdd : WHILEE . exp DOO LBRACE cmds RBRACE ENDWHH 
+
+	IDE	shift 12
+	NEG	shift 34
+	PLUSS	shift 33
+	LPAR	shift 32
+	NOTT	shift 31
+	NUM	shift 30
+	TT	shift 29
+	FF	shift 28
+
+	exp	goto 27
+	variable	goto 26
+	numeral	goto 25
+
+	.	error
+
+
+state 17:
+
+	cmdd : IFF . exp THENN LBRACE cmds RBRACE ELSEE LBRACE cmds RBRACE ENDIFF 
+
+	IDE	shift 12
+	NEG	shift 34
+	PLUSS	shift 33
+	LPAR	shift 32
+	NOTT	shift 31
+	NUM	shift 30
+	TT	shift 29
+	FF	shift 28
+
+	exp	goto 35
+	variable	goto 26
+	numeral	goto 25
+
+	.	error
+
+
+state 18:
+
+	cmdd : WRITEE . exp 
+
+	IDE	shift 12
+	NEG	shift 34
+	PLUSS	shift 33
+	LPAR	shift 32
+	NOTT	shift 31
+	NUM	shift 30
+	TT	shift 29
+	FF	shift 28
+
+	exp	goto 36
+	variable	goto 26
+	numeral	goto 25
+
+	.	error
+
+
+state 19:
+
+	cmdd : READD . variable 
+
+	IDE	shift 12
+
+	variable	goto 37
+
+	.	error
+
+
+state 20:
+
+	varlist : variable COMMA . varlist 
+
+	IDE	shift 12
+
+	varlist	goto 38
+	variable	goto 10
+
+	.	error
+
+
+state 21:
+
+	declr : VARR varlist COLON . typ SCOLON 
+
+	INTT	shift 41
+	BOOLL	shift 40
+
+	typ	goto 39
+
+	.	error
+
+
+state 22:
+
+	cmdd : variable ASSIGN . exp 
+
+	IDE	shift 12
+	NEG	shift 34
+	PLUSS	shift 33
+	LPAR	shift 32
+	NOTT	shift 31
+	NUM	shift 30
+	TT	shift 29
+	FF	shift 28
+
+	exp	goto 42
+	variable	goto 26
+	numeral	goto 25
+
+	.	error
+
+
+state 23:
+
+	cmds : cmdd SCOLON . cmds 
+
+	IDE	shift 12
+	RBRACE	reduce by rule 10
+	READD	shift 19
+	WRITEE	shift 18
+	IFF	shift 17
+	WHILEE	shift 16
+
+	cmds	goto 43
+	cmdd	goto 14
+	variable	goto 13
+
+	.	error
+
+
+state 24:
+
+	block : declrlist LBRACE cmds RBRACE .  (reduce by rule 1)
+
+	EOF	reduce by rule 1
+
+
+	.	error
+
+
+state 25:
+
+	exp : numeral .  (reduce by rule 33)
+
+	SCOLON	reduce by rule 33
+	PLUSS	reduce by rule 33
+	MINUSS	reduce by rule 33
+	MUL	reduce by rule 33
+	DIVV	reduce by rule 33
+	MODD	reduce by rule 33
+	RPAR	reduce by rule 33
+	ORR	reduce by rule 33
+	ANDD	reduce by rule 33
+	LTT	reduce by rule 33
+	LEQQ	reduce by rule 33
+	EQQ	reduce by rule 33
+	GTT	reduce by rule 33
+	GEQQ	reduce by rule 33
+	NEQQ	reduce by rule 33
+	THENN	reduce by rule 33
+	DOO	reduce by rule 33
+
+
+	.	error
+
+
+state 26:
+
+	exp : variable .  (reduce by rule 32)
+
+	SCOLON	reduce by rule 32
+	PLUSS	reduce by rule 32
+	MINUSS	reduce by rule 32
+	MUL	reduce by rule 32
+	DIVV	reduce by rule 32
+	MODD	reduce by rule 32
+	RPAR	reduce by rule 32
+	ORR	reduce by rule 32
+	ANDD	reduce by rule 32
+	LTT	reduce by rule 32
+	LEQQ	reduce by rule 32
+	EQQ	reduce by rule 32
+	GTT	reduce by rule 32
+	GEQQ	reduce by rule 32
+	NEQQ	reduce by rule 32
+	THENN	reduce by rule 32
+	DOO	reduce by rule 32
+
+
+	.	error
+
+
+state 27:
+
+	cmdd : WHILEE exp . DOO LBRACE cmds RBRACE ENDWHH 
+	exp : exp . PLUSS exp 
+	exp : exp . MINUSS exp 
+	exp : exp . MUL exp 
+	exp : exp . DIVV exp 
+	exp : exp . MODD exp 
+	exp : exp . ORR exp 
+	exp : exp . ANDD exp 
+	exp : exp . LTT exp 
+	exp : exp . LEQQ exp 
+	exp : exp . EQQ exp 
+	exp : exp . GTT exp 
+	exp : exp . GEQQ exp 
+	exp : exp . NEQQ exp 
+
+	PLUSS	shift 57
+	MINUSS	shift 56
+	MUL	shift 55
+	DIVV	shift 54
+	MODD	shift 53
+	ORR	shift 52
+	ANDD	shift 51
+	LTT	shift 50
+	LEQQ	shift 49
+	EQQ	shift 48
+	GTT	shift 47
+	GEQQ	shift 46
+	NEQQ	shift 45
+	DOO	shift 44
+
+
+	.	error
+
+
+state 28:
+
+	exp : FF .  (reduce by rule 35)
+
+	SCOLON	reduce by rule 35
+	PLUSS	reduce by rule 35
+	MINUSS	reduce by rule 35
+	MUL	reduce by rule 35
+	DIVV	reduce by rule 35
+	MODD	reduce by rule 35
+	RPAR	reduce by rule 35
+	ORR	reduce by rule 35
+	ANDD	reduce by rule 35
+	LTT	reduce by rule 35
+	LEQQ	reduce by rule 35
+	EQQ	reduce by rule 35
+	GTT	reduce by rule 35
+	GEQQ	reduce by rule 35
+	NEQQ	reduce by rule 35
+	THENN	reduce by rule 35
+	DOO	reduce by rule 35
+
+
+	.	error
+
+
+state 29:
+
+	exp : TT .  (reduce by rule 34)
+
+	SCOLON	reduce by rule 34
+	PLUSS	reduce by rule 34
+	MINUSS	reduce by rule 34
+	MUL	reduce by rule 34
+	DIVV	reduce by rule 34
+	MODD	reduce by rule 34
+	RPAR	reduce by rule 34
+	ORR	reduce by rule 34
+	ANDD	reduce by rule 34
+	LTT	reduce by rule 34
+	LEQQ	reduce by rule 34
+	EQQ	reduce by rule 34
+	GTT	reduce by rule 34
+	GEQQ	reduce by rule 34
+	NEQQ	reduce by rule 34
+	THENN	reduce by rule 34
+	DOO	reduce by rule 34
+
+
+	.	error
+
+
+state 30:
+
+	numeral : NUM .  (reduce by rule 39)
+
+	SCOLON	reduce by rule 39
+	PLUSS	reduce by rule 39
+	MINUSS	reduce by rule 39
+	MUL	reduce by rule 39
+	DIVV	reduce by rule 39
+	MODD	reduce by rule 39
+	RPAR	reduce by rule 39
+	ORR	reduce by rule 39
+	ANDD	reduce by rule 39
+	LTT	reduce by rule 39
+	LEQQ	reduce by rule 39
+	EQQ	reduce by rule 39
+	GTT	reduce by rule 39
+	GEQQ	reduce by rule 39
+	NEQQ	reduce by rule 39
+	THENN	reduce by rule 39
+	DOO	reduce by rule 39
+
+
+	.	error
+
+
+state 31:
+
+	exp : NOTT . exp 
+
+	IDE	shift 12
+	NEG	shift 34
+	PLUSS	shift 33
+	LPAR	shift 32
+	NOTT	shift 31
+	NUM	shift 30
+	TT	shift 29
+	FF	shift 28
+
+	exp	goto 58
+	variable	goto 26
+	numeral	goto 25
+
+	.	error
+
+
+state 32:
+
+	exp : LPAR . exp RPAR 
+
+	IDE	shift 12
+	NEG	shift 34
+	PLUSS	shift 33
+	LPAR	shift 32
+	NOTT	shift 31
+	NUM	shift 30
+	TT	shift 29
+	FF	shift 28
+
+	exp	goto 59
+	variable	goto 26
+	numeral	goto 25
+
+	.	error
+
+
+state 33:
+
+	numeral : PLUSS . NUM 
+
+	NUM	shift 60
+
+
+	.	error
+
+
+state 34:
+
+	exp : NEG . exp 
+	numeral : NEG . NUM 
+
+	IDE	shift 12
+	NEG	shift 34
+	PLUSS	shift 33
+	LPAR	shift 32
+	NOTT	shift 31
+	NUM	shift 62
+	TT	shift 29
+	FF	shift 28
+
+	exp	goto 61
+	variable	goto 26
+	numeral	goto 25
+
+	.	error
+
+
+state 35:
+
+	cmdd : IFF exp . THENN LBRACE cmds RBRACE ELSEE LBRACE cmds RBRACE ENDIFF 
+	exp : exp . PLUSS exp 
+	exp : exp . MINUSS exp 
+	exp : exp . MUL exp 
+	exp : exp . DIVV exp 
+	exp : exp . MODD exp 
+	exp : exp . ORR exp 
+	exp : exp . ANDD exp 
+	exp : exp . LTT exp 
+	exp : exp . LEQQ exp 
+	exp : exp . EQQ exp 
+	exp : exp . GTT exp 
+	exp : exp . GEQQ exp 
+	exp : exp . NEQQ exp 
+
+	PLUSS	shift 57
+	MINUSS	shift 56
+	MUL	shift 55
+	DIVV	shift 54
+	MODD	shift 53
+	ORR	shift 52
+	ANDD	shift 51
+	LTT	shift 50
+	LEQQ	shift 49
+	EQQ	shift 48
+	GTT	shift 47
+	GEQQ	shift 46
+	NEQQ	shift 45
+	THENN	shift 63
+
+
+	.	error
+
+
+state 36:
+
+	cmdd : WRITEE exp .  (reduce by rule 13)
+	exp : exp . PLUSS exp 
+	exp : exp . MINUSS exp 
+	exp : exp . MUL exp 
+	exp : exp . DIVV exp 
+	exp : exp . MODD exp 
+	exp : exp . ORR exp 
+	exp : exp . ANDD exp 
+	exp : exp . LTT exp 
+	exp : exp . LEQQ exp 
+	exp : exp . EQQ exp 
+	exp : exp . GTT exp 
+	exp : exp . GEQQ exp 
+	exp : exp . NEQQ exp 
+
+	SCOLON	reduce by rule 13
+	PLUSS	shift 57
+	MINUSS	shift 56
+	MUL	shift 55
+	DIVV	shift 54
+	MODD	shift 53
+	ORR	shift 52
+	ANDD	shift 51
+	LTT	shift 50
+	LEQQ	shift 49
+	EQQ	shift 48
+	GTT	shift 47
+	GEQQ	shift 46
+	NEQQ	shift 45
+
+
+	.	error
+
+
+state 37:
+
+	cmdd : READD variable .  (reduce by rule 12)
+
+	SCOLON	reduce by rule 12
+
+
+	.	error
+
+
+state 38:
+
+	varlist : variable COMMA varlist .  (reduce by rule 7)
+
+	COLON	reduce by rule 7
+
+
+	.	error
+
+
+state 39:
+
+	declr : VARR varlist COLON typ . SCOLON 
+
+	SCOLON	shift 64
+
+
+	.	error
+
+
+state 40:
+
+	typ : BOOLL .  (reduce by rule 6)
+
+	SCOLON	reduce by rule 6
+
+
+	.	error
+
+
+state 41:
+
+	typ : INTT .  (reduce by rule 5)
+
+	SCOLON	reduce by rule 5
+
+
+	.	error
+
+
+state 42:
+
+	cmdd : variable ASSIGN exp .  (reduce by rule 11)
+	exp : exp . PLUSS exp 
+	exp : exp . MINUSS exp 
+	exp : exp . MUL exp 
+	exp : exp . DIVV exp 
+	exp : exp . MODD exp 
+	exp : exp . ORR exp 
+	exp : exp . ANDD exp 
+	exp : exp . LTT exp 
+	exp : exp . LEQQ exp 
+	exp : exp . EQQ exp 
+	exp : exp . GTT exp 
+	exp : exp . GEQQ exp 
+	exp : exp . NEQQ exp 
+
+	SCOLON	reduce by rule 11
+	PLUSS	shift 57
+	MINUSS	shift 56
+	MUL	shift 55
+	DIVV	shift 54
+	MODD	shift 53
+	ORR	shift 52
+	ANDD	shift 51
+	LTT	shift 50
+	LEQQ	shift 49
+	EQQ	shift 48
+	GTT	shift 47
+	GEQQ	shift 46
+	NEQQ	shift 45
+
+
+	.	error
+
+
+state 43:
+
+	cmds : cmdd SCOLON cmds .  (reduce by rule 9)
+
+	RBRACE	reduce by rule 9
+
+
+	.	error
+
+
+state 44:
+
+	cmdd : WHILEE exp DOO . LBRACE cmds RBRACE ENDWHH 
+
+	LBRACE	shift 65
+
+
+	.	error
+
+
+state 45:
+
+	exp : exp NEQQ . exp 
+
+	IDE	shift 12
+	NEG	shift 34
+	PLUSS	shift 33
+	LPAR	shift 32
+	NOTT	shift 31
+	NUM	shift 30
+	TT	shift 29
+	FF	shift 28
+
+	exp	goto 66
+	variable	goto 26
+	numeral	goto 25
+
+	.	error
+
+
+state 46:
+
+	exp : exp GEQQ . exp 
+
+	IDE	shift 12
+	NEG	shift 34
+	PLUSS	shift 33
+	LPAR	shift 32
+	NOTT	shift 31
+	NUM	shift 30
+	TT	shift 29
+	FF	shift 28
+
+	exp	goto 67
+	variable	goto 26
+	numeral	goto 25
+
+	.	error
+
+
+state 47:
+
+	exp : exp GTT . exp 
+
+	IDE	shift 12
+	NEG	shift 34
+	PLUSS	shift 33
+	LPAR	shift 32
+	NOTT	shift 31
+	NUM	shift 30
+	TT	shift 29
+	FF	shift 28
+
+	exp	goto 68
+	variable	goto 26
+	numeral	goto 25
+
+	.	error
+
+
+state 48:
+
+	exp : exp EQQ . exp 
+
+	IDE	shift 12
+	NEG	shift 34
+	PLUSS	shift 33
+	LPAR	shift 32
+	NOTT	shift 31
+	NUM	shift 30
+	TT	shift 29
+	FF	shift 28
+
+	exp	goto 69
+	variable	goto 26
+	numeral	goto 25
+
+	.	error
+
+
+state 49:
+
+	exp : exp LEQQ . exp 
+
+	IDE	shift 12
+	NEG	shift 34
+	PLUSS	shift 33
+	LPAR	shift 32
+	NOTT	shift 31
+	NUM	shift 30
+	TT	shift 29
+	FF	shift 28
+
+	exp	goto 70
+	variable	goto 26
+	numeral	goto 25
+
+	.	error
+
+
+state 50:
+
+	exp : exp LTT . exp 
+
+	IDE	shift 12
+	NEG	shift 34
+	PLUSS	shift 33
+	LPAR	shift 32
+	NOTT	shift 31
+	NUM	shift 30
+	TT	shift 29
+	FF	shift 28
+
+	exp	goto 71
+	variable	goto 26
+	numeral	goto 25
+
+	.	error
+
+
+state 51:
+
+	exp : exp ANDD . exp 
+
+	IDE	shift 12
+	NEG	shift 34
+	PLUSS	shift 33
+	LPAR	shift 32
+	NOTT	shift 31
+	NUM	shift 30
+	TT	shift 29
+	FF	shift 28
+
+	exp	goto 72
+	variable	goto 26
+	numeral	goto 25
+
+	.	error
+
+
+state 52:
+
+	exp : exp ORR . exp 
+
+	IDE	shift 12
+	NEG	shift 34
+	PLUSS	shift 33
+	LPAR	shift 32
+	NOTT	shift 31
+	NUM	shift 30
+	TT	shift 29
+	FF	shift 28
+
+	exp	goto 73
+	variable	goto 26
+	numeral	goto 25
+
+	.	error
+
+
+state 53:
+
+	exp : exp MODD . exp 
+
+	IDE	shift 12
+	NEG	shift 34
+	PLUSS	shift 33
+	LPAR	shift 32
+	NOTT	shift 31
+	NUM	shift 30
+	TT	shift 29
+	FF	shift 28
+
+	exp	goto 74
+	variable	goto 26
+	numeral	goto 25
+
+	.	error
+
+
+state 54:
+
+	exp : exp DIVV . exp 
+
+	IDE	shift 12
+	NEG	shift 34
+	PLUSS	shift 33
+	LPAR	shift 32
+	NOTT	shift 31
+	NUM	shift 30
+	TT	shift 29
+	FF	shift 28
+
+	exp	goto 75
+	variable	goto 26
+	numeral	goto 25
+
+	.	error
+
+
+state 55:
+
+	exp : exp MUL . exp 
+
+	IDE	shift 12
+	NEG	shift 34
+	PLUSS	shift 33
+	LPAR	shift 32
+	NOTT	shift 31
+	NUM	shift 30
+	TT	shift 29
+	FF	shift 28
+
+	exp	goto 76
+	variable	goto 26
+	numeral	goto 25
+
+	.	error
+
+
+state 56:
+
+	exp : exp MINUSS . exp 
+
+	IDE	shift 12
+	NEG	shift 34
+	PLUSS	shift 33
+	LPAR	shift 32
+	NOTT	shift 31
+	NUM	shift 30
+	TT	shift 29
+	FF	shift 28
+
+	exp	goto 77
+	variable	goto 26
+	numeral	goto 25
+
+	.	error
+
+
+state 57:
+
+	exp : exp PLUSS . exp 
+
+	IDE	shift 12
+	NEG	shift 34
+	PLUSS	shift 33
+	LPAR	shift 32
+	NOTT	shift 31
+	NUM	shift 30
+	TT	shift 29
+	FF	shift 28
+
+	exp	goto 78
+	variable	goto 26
+	numeral	goto 25
+
+	.	error
+
+
+state 58:
+
+	exp : exp . PLUSS exp 
+	exp : exp . MINUSS exp 
+	exp : exp . MUL exp 
+	exp : exp . DIVV exp 
+	exp : exp . MODD exp 
+	exp : NOTT exp .  (reduce by rule 23)
+	exp : exp . ORR exp 
+	exp : exp . ANDD exp 
+	exp : exp . LTT exp 
+	exp : exp . LEQQ exp 
+	exp : exp . EQQ exp 
+	exp : exp . GTT exp 
+	exp : exp . GEQQ exp 
+	exp : exp . NEQQ exp 
+
+	SCOLON	reduce by rule 23
+	PLUSS	reduce by rule 23
+	MINUSS	reduce by rule 23
+	MUL	reduce by rule 23
+	DIVV	reduce by rule 23
+	MODD	reduce by rule 23
+	RPAR	reduce by rule 23
+	ORR	reduce by rule 23
+	ANDD	reduce by rule 23
+	LTT	reduce by rule 23
+	LEQQ	reduce by rule 23
+	EQQ	reduce by rule 23
+	GTT	reduce by rule 23
+	GEQQ	reduce by rule 23
+	NEQQ	reduce by rule 23
+	THENN	reduce by rule 23
+	DOO	reduce by rule 23
+
+
+	.	error
+
+
+state 59:
+
+	exp : exp . PLUSS exp 
+	exp : exp . MINUSS exp 
+	exp : exp . MUL exp 
+	exp : exp . DIVV exp 
+	exp : exp . MODD exp 
+	exp : LPAR exp . RPAR 
+	exp : exp . ORR exp 
+	exp : exp . ANDD exp 
+	exp : exp . LTT exp 
+	exp : exp . LEQQ exp 
+	exp : exp . EQQ exp 
+	exp : exp . GTT exp 
+	exp : exp . GEQQ exp 
+	exp : exp . NEQQ exp 
+
+	PLUSS	shift 57
+	MINUSS	shift 56
+	MUL	shift 55
+	DIVV	shift 54
+	MODD	shift 53
+	RPAR	shift 79
+	ORR	shift 52
+	ANDD	shift 51
+	LTT	shift 50
+	LEQQ	shift 49
+	EQQ	shift 48
+	GTT	shift 47
+	GEQQ	shift 46
+	NEQQ	shift 45
+
+
+	.	error
+
+
+state 60:
+
+	numeral : PLUSS NUM .  (reduce by rule 37)
+
+	SCOLON	reduce by rule 37
+	PLUSS	reduce by rule 37
+	MINUSS	reduce by rule 37
+	MUL	reduce by rule 37
+	DIVV	reduce by rule 37
+	MODD	reduce by rule 37
+	RPAR	reduce by rule 37
+	ORR	reduce by rule 37
+	ANDD	reduce by rule 37
+	LTT	reduce by rule 37
+	LEQQ	reduce by rule 37
+	EQQ	reduce by rule 37
+	GTT	reduce by rule 37
+	GEQQ	reduce by rule 37
+	NEQQ	reduce by rule 37
+	THENN	reduce by rule 37
+	DOO	reduce by rule 37
+
+
+	.	error
+
+
+state 61:
+
+	exp : NEG exp .  (reduce by rule 16)
+	exp : exp . PLUSS exp 
+	exp : exp . MINUSS exp 
+	exp : exp . MUL exp 
+	exp : exp . DIVV exp 
+	exp : exp . MODD exp 
+	exp : exp . ORR exp 
+	exp : exp . ANDD exp 
+	exp : exp . LTT exp 
+	exp : exp . LEQQ exp 
+	exp : exp . EQQ exp 
+	exp : exp . GTT exp 
+	exp : exp . GEQQ exp 
+	exp : exp . NEQQ exp 
+
+	SCOLON	reduce by rule 16
+	PLUSS	reduce by rule 16
+	MINUSS	reduce by rule 16
+	MUL	reduce by rule 16
+	DIVV	reduce by rule 16
+	MODD	reduce by rule 16
+	RPAR	reduce by rule 16
+	ORR	reduce by rule 16
+	ANDD	reduce by rule 16
+	LTT	reduce by rule 16
+	LEQQ	reduce by rule 16
+	EQQ	reduce by rule 16
+	GTT	reduce by rule 16
+	GEQQ	reduce by rule 16
+	NEQQ	reduce by rule 16
+	THENN	reduce by rule 16
+	DOO	reduce by rule 16
+
+
+	.	error
+
+error:  state 62: reduce/reduce conflict between rule 39 and rule 38 on DOO
+error:  state 62: reduce/reduce conflict between rule 39 and rule 38 on THENN
+error:  state 62: reduce/reduce conflict between rule 39 and rule 38 on NEQQ
+error:  state 62: reduce/reduce conflict between rule 39 and rule 38 on GEQQ
+error:  state 62: reduce/reduce conflict between rule 39 and rule 38 on GTT
+error:  state 62: reduce/reduce conflict between rule 39 and rule 38 on EQQ
+error:  state 62: reduce/reduce conflict between rule 39 and rule 38 on LEQQ
+error:  state 62: reduce/reduce conflict between rule 39 and rule 38 on LTT
+error:  state 62: reduce/reduce conflict between rule 39 and rule 38 on ANDD
+error:  state 62: reduce/reduce conflict between rule 39 and rule 38 on ORR
+error:  state 62: reduce/reduce conflict between rule 39 and rule 38 on RPAR
+error:  state 62: reduce/reduce conflict between rule 39 and rule 38 on MODD
+error:  state 62: reduce/reduce conflict between rule 39 and rule 38 on DIVV
+error:  state 62: reduce/reduce conflict between rule 39 and rule 38 on MUL
+error:  state 62: reduce/reduce conflict between rule 39 and rule 38 on MINUSS
+error:  state 62: reduce/reduce conflict between rule 39 and rule 38 on PLUSS
+error:  state 62: reduce/reduce conflict between rule 39 and rule 38 on SCOLON
+
+state 62:
+
+	numeral : NEG NUM .  (reduce by rule 38)
+	numeral : NUM .  (reduce by rule 39)
+
+	SCOLON	reduce by rule 38
+	PLUSS	reduce by rule 38
+	MINUSS	reduce by rule 38
+	MUL	reduce by rule 38
+	DIVV	reduce by rule 38
+	MODD	reduce by rule 38
+	RPAR	reduce by rule 38
+	ORR	reduce by rule 38
+	ANDD	reduce by rule 38
+	LTT	reduce by rule 38
+	LEQQ	reduce by rule 38
+	EQQ	reduce by rule 38
+	GTT	reduce by rule 38
+	GEQQ	reduce by rule 38
+	NEQQ	reduce by rule 38
+	THENN	reduce by rule 38
+	DOO	reduce by rule 38
+
+
+	.	error
+
+
+state 63:
+
+	cmdd : IFF exp THENN . LBRACE cmds RBRACE ELSEE LBRACE cmds RBRACE ENDIFF 
+
+	LBRACE	shift 80
+
+
+	.	error
+
+
+state 64:
+
+	declr : VARR varlist COLON typ SCOLON .  (reduce by rule 4)
+
+	LBRACE	reduce by rule 4
+	VARR	reduce by rule 4
+
+
+	.	error
+
+
+state 65:
+
+	cmdd : WHILEE exp DOO LBRACE . cmds RBRACE ENDWHH 
+
+	IDE	shift 12
+	RBRACE	reduce by rule 10
+	READD	shift 19
+	WRITEE	shift 18
+	IFF	shift 17
+	WHILEE	shift 16
+
+	cmds	goto 81
+	cmdd	goto 14
+	variable	goto 13
+
+	.	error
+
+
+state 66:
+
+	exp : exp . PLUSS exp 
+	exp : exp . MINUSS exp 
+	exp : exp . MUL exp 
+	exp : exp . DIVV exp 
+	exp : exp . MODD exp 
+	exp : exp . ORR exp 
+	exp : exp . ANDD exp 
+	exp : exp . LTT exp 
+	exp : exp . LEQQ exp 
+	exp : exp . EQQ exp 
+	exp : exp . GTT exp 
+	exp : exp . GEQQ exp 
+	exp : exp . NEQQ exp 
+	exp : exp NEQQ exp .  (reduce by rule 31)
+
+	SCOLON	reduce by rule 31
+	PLUSS	shift 57
+	MINUSS	shift 56
+	MUL	shift 55
+	DIVV	shift 54
+	MODD	shift 53
+	RPAR	reduce by rule 31
+	ORR	shift 52
+	ANDD	shift 51
+	LTT	reduce by rule 31
+	LEQQ	reduce by rule 31
+	EQQ	reduce by rule 31
+	GTT	reduce by rule 31
+	GEQQ	reduce by rule 31
+	NEQQ	reduce by rule 31
+	THENN	reduce by rule 31
+	DOO	reduce by rule 31
+
+
+	.	error
+
+
+state 67:
+
+	exp : exp . PLUSS exp 
+	exp : exp . MINUSS exp 
+	exp : exp . MUL exp 
+	exp : exp . DIVV exp 
+	exp : exp . MODD exp 
+	exp : exp . ORR exp 
+	exp : exp . ANDD exp 
+	exp : exp . LTT exp 
+	exp : exp . LEQQ exp 
+	exp : exp . EQQ exp 
+	exp : exp . GTT exp 
+	exp : exp . GEQQ exp 
+	exp : exp GEQQ exp .  (reduce by rule 30)
+	exp : exp . NEQQ exp 
+
+	SCOLON	reduce by rule 30
+	PLUSS	shift 57
+	MINUSS	shift 56
+	MUL	shift 55
+	DIVV	shift 54
+	MODD	shift 53
+	RPAR	reduce by rule 30
+	ORR	shift 52
+	ANDD	shift 51
+	LTT	reduce by rule 30
+	LEQQ	reduce by rule 30
+	EQQ	reduce by rule 30
+	GTT	reduce by rule 30
+	GEQQ	reduce by rule 30
+	NEQQ	reduce by rule 30
+	THENN	reduce by rule 30
+	DOO	reduce by rule 30
+
+
+	.	error
+
+
+state 68:
+
+	exp : exp . PLUSS exp 
+	exp : exp . MINUSS exp 
+	exp : exp . MUL exp 
+	exp : exp . DIVV exp 
+	exp : exp . MODD exp 
+	exp : exp . ORR exp 
+	exp : exp . ANDD exp 
+	exp : exp . LTT exp 
+	exp : exp . LEQQ exp 
+	exp : exp . EQQ exp 
+	exp : exp . GTT exp 
+	exp : exp GTT exp .  (reduce by rule 29)
+	exp : exp . GEQQ exp 
+	exp : exp . NEQQ exp 
+
+	SCOLON	reduce by rule 29
+	PLUSS	shift 57
+	MINUSS	shift 56
+	MUL	shift 55
+	DIVV	shift 54
+	MODD	shift 53
+	RPAR	reduce by rule 29
+	ORR	shift 52
+	ANDD	shift 51
+	LTT	reduce by rule 29
+	LEQQ	reduce by rule 29
+	EQQ	reduce by rule 29
+	GTT	reduce by rule 29
+	GEQQ	reduce by rule 29
+	NEQQ	reduce by rule 29
+	THENN	reduce by rule 29
+	DOO	reduce by rule 29
+
+
+	.	error
+
+
+state 69:
+
+	exp : exp . PLUSS exp 
+	exp : exp . MINUSS exp 
+	exp : exp . MUL exp 
+	exp : exp . DIVV exp 
+	exp : exp . MODD exp 
+	exp : exp . ORR exp 
+	exp : exp . ANDD exp 
+	exp : exp . LTT exp 
+	exp : exp . LEQQ exp 
+	exp : exp . EQQ exp 
+	exp : exp EQQ exp .  (reduce by rule 28)
+	exp : exp . GTT exp 
+	exp : exp . GEQQ exp 
+	exp : exp . NEQQ exp 
+
+	SCOLON	reduce by rule 28
+	PLUSS	shift 57
+	MINUSS	shift 56
+	MUL	shift 55
+	DIVV	shift 54
+	MODD	shift 53
+	RPAR	reduce by rule 28
+	ORR	shift 52
+	ANDD	shift 51
+	LTT	reduce by rule 28
+	LEQQ	reduce by rule 28
+	EQQ	reduce by rule 28
+	GTT	reduce by rule 28
+	GEQQ	reduce by rule 28
+	NEQQ	reduce by rule 28
+	THENN	reduce by rule 28
+	DOO	reduce by rule 28
+
+
+	.	error
+
+
+state 70:
+
+	exp : exp . PLUSS exp 
+	exp : exp . MINUSS exp 
+	exp : exp . MUL exp 
+	exp : exp . DIVV exp 
+	exp : exp . MODD exp 
+	exp : exp . ORR exp 
+	exp : exp . ANDD exp 
+	exp : exp . LTT exp 
+	exp : exp . LEQQ exp 
+	exp : exp LEQQ exp .  (reduce by rule 27)
+	exp : exp . EQQ exp 
+	exp : exp . GTT exp 
+	exp : exp . GEQQ exp 
+	exp : exp . NEQQ exp 
+
+	SCOLON	reduce by rule 27
+	PLUSS	shift 57
+	MINUSS	shift 56
+	MUL	shift 55
+	DIVV	shift 54
+	MODD	shift 53
+	RPAR	reduce by rule 27
+	ORR	shift 52
+	ANDD	shift 51
+	LTT	reduce by rule 27
+	LEQQ	reduce by rule 27
+	EQQ	reduce by rule 27
+	GTT	reduce by rule 27
+	GEQQ	reduce by rule 27
+	NEQQ	reduce by rule 27
+	THENN	reduce by rule 27
+	DOO	reduce by rule 27
+
+
+	.	error
+
+
+state 71:
+
+	exp : exp . PLUSS exp 
+	exp : exp . MINUSS exp 
+	exp : exp . MUL exp 
+	exp : exp . DIVV exp 
+	exp : exp . MODD exp 
+	exp : exp . ORR exp 
+	exp : exp . ANDD exp 
+	exp : exp . LTT exp 
+	exp : exp LTT exp .  (reduce by rule 26)
+	exp : exp . LEQQ exp 
+	exp : exp . EQQ exp 
+	exp : exp . GTT exp 
+	exp : exp . GEQQ exp 
+	exp : exp . NEQQ exp 
+
+	SCOLON	reduce by rule 26
+	PLUSS	shift 57
+	MINUSS	shift 56
+	MUL	shift 55
+	DIVV	shift 54
+	MODD	shift 53
+	RPAR	reduce by rule 26
+	ORR	shift 52
+	ANDD	shift 51
+	LTT	reduce by rule 26
+	LEQQ	reduce by rule 26
+	EQQ	reduce by rule 26
+	GTT	reduce by rule 26
+	GEQQ	reduce by rule 26
+	NEQQ	reduce by rule 26
+	THENN	reduce by rule 26
+	DOO	reduce by rule 26
+
+
+	.	error
+
+
+state 72:
+
+	exp : exp . PLUSS exp 
+	exp : exp . MINUSS exp 
+	exp : exp . MUL exp 
+	exp : exp . DIVV exp 
+	exp : exp . MODD exp 
+	exp : exp . ORR exp 
+	exp : exp . ANDD exp 
+	exp : exp ANDD exp .  (reduce by rule 25)
+	exp : exp . LTT exp 
+	exp : exp . LEQQ exp 
+	exp : exp . EQQ exp 
+	exp : exp . GTT exp 
+	exp : exp . GEQQ exp 
+	exp : exp . NEQQ exp 
+
+	SCOLON	reduce by rule 25
+	PLUSS	reduce by rule 25
+	MINUSS	reduce by rule 25
+	MUL	reduce by rule 25
+	DIVV	reduce by rule 25
+	MODD	reduce by rule 25
+	RPAR	reduce by rule 25
+	ORR	reduce by rule 25
+	ANDD	reduce by rule 25
+	LTT	reduce by rule 25
+	LEQQ	reduce by rule 25
+	EQQ	reduce by rule 25
+	GTT	reduce by rule 25
+	GEQQ	reduce by rule 25
+	NEQQ	reduce by rule 25
+	THENN	reduce by rule 25
+	DOO	reduce by rule 25
+
+
+	.	error
+
+
+state 73:
+
+	exp : exp . PLUSS exp 
+	exp : exp . MINUSS exp 
+	exp : exp . MUL exp 
+	exp : exp . DIVV exp 
+	exp : exp . MODD exp 
+	exp : exp . ORR exp 
+	exp : exp ORR exp .  (reduce by rule 24)
+	exp : exp . ANDD exp 
+	exp : exp . LTT exp 
+	exp : exp . LEQQ exp 
+	exp : exp . EQQ exp 
+	exp : exp . GTT exp 
+	exp : exp . GEQQ exp 
+	exp : exp . NEQQ exp 
+
+	SCOLON	reduce by rule 24
+	PLUSS	reduce by rule 24
+	MINUSS	reduce by rule 24
+	MUL	shift 55
+	DIVV	shift 54
+	MODD	shift 53
+	RPAR	reduce by rule 24
+	ORR	reduce by rule 24
+	ANDD	shift 51
+	LTT	reduce by rule 24
+	LEQQ	reduce by rule 24
+	EQQ	reduce by rule 24
+	GTT	reduce by rule 24
+	GEQQ	reduce by rule 24
+	NEQQ	reduce by rule 24
+	THENN	reduce by rule 24
+	DOO	reduce by rule 24
+
+
+	.	error
+
+
+state 74:
+
+	exp : exp . PLUSS exp 
+	exp : exp . MINUSS exp 
+	exp : exp . MUL exp 
+	exp : exp . DIVV exp 
+	exp : exp . MODD exp 
+	exp : exp MODD exp .  (reduce by rule 21)
+	exp : exp . ORR exp 
+	exp : exp . ANDD exp 
+	exp : exp . LTT exp 
+	exp : exp . LEQQ exp 
+	exp : exp . EQQ exp 
+	exp : exp . GTT exp 
+	exp : exp . GEQQ exp 
+	exp : exp . NEQQ exp 
+
+	SCOLON	reduce by rule 21
+	PLUSS	reduce by rule 21
+	MINUSS	reduce by rule 21
+	MUL	reduce by rule 21
+	DIVV	reduce by rule 21
+	MODD	reduce by rule 21
+	RPAR	reduce by rule 21
+	ORR	reduce by rule 21
+	ANDD	reduce by rule 21
+	LTT	reduce by rule 21
+	LEQQ	reduce by rule 21
+	EQQ	reduce by rule 21
+	GTT	reduce by rule 21
+	GEQQ	reduce by rule 21
+	NEQQ	reduce by rule 21
+	THENN	reduce by rule 21
+	DOO	reduce by rule 21
+
+
+	.	error
+
+
+state 75:
+
+	exp : exp . PLUSS exp 
+	exp : exp . MINUSS exp 
+	exp : exp . MUL exp 
+	exp : exp . DIVV exp 
+	exp : exp DIVV exp .  (reduce by rule 20)
+	exp : exp . MODD exp 
+	exp : exp . ORR exp 
+	exp : exp . ANDD exp 
+	exp : exp . LTT exp 
+	exp : exp . LEQQ exp 
+	exp : exp . EQQ exp 
+	exp : exp . GTT exp 
+	exp : exp . GEQQ exp 
+	exp : exp . NEQQ exp 
+
+	SCOLON	reduce by rule 20
+	PLUSS	reduce by rule 20
+	MINUSS	reduce by rule 20
+	MUL	reduce by rule 20
+	DIVV	reduce by rule 20
+	MODD	reduce by rule 20
+	RPAR	reduce by rule 20
+	ORR	reduce by rule 20
+	ANDD	reduce by rule 20
+	LTT	reduce by rule 20
+	LEQQ	reduce by rule 20
+	EQQ	reduce by rule 20
+	GTT	reduce by rule 20
+	GEQQ	reduce by rule 20
+	NEQQ	reduce by rule 20
+	THENN	reduce by rule 20
+	DOO	reduce by rule 20
+
+
+	.	error
+
+
+state 76:
+
+	exp : exp . PLUSS exp 
+	exp : exp . MINUSS exp 
+	exp : exp . MUL exp 
+	exp : exp MUL exp .  (reduce by rule 19)
+	exp : exp . DIVV exp 
+	exp : exp . MODD exp 
+	exp : exp . ORR exp 
+	exp : exp . ANDD exp 
+	exp : exp . LTT exp 
+	exp : exp . LEQQ exp 
+	exp : exp . EQQ exp 
+	exp : exp . GTT exp 
+	exp : exp . GEQQ exp 
+	exp : exp . NEQQ exp 
+
+	SCOLON	reduce by rule 19
+	PLUSS	reduce by rule 19
+	MINUSS	reduce by rule 19
+	MUL	reduce by rule 19
+	DIVV	reduce by rule 19
+	MODD	reduce by rule 19
+	RPAR	reduce by rule 19
+	ORR	reduce by rule 19
+	ANDD	reduce by rule 19
+	LTT	reduce by rule 19
+	LEQQ	reduce by rule 19
+	EQQ	reduce by rule 19
+	GTT	reduce by rule 19
+	GEQQ	reduce by rule 19
+	NEQQ	reduce by rule 19
+	THENN	reduce by rule 19
+	DOO	reduce by rule 19
+
+
+	.	error
+
+
+state 77:
+
+	exp : exp . PLUSS exp 
+	exp : exp . MINUSS exp 
+	exp : exp MINUSS exp .  (reduce by rule 18)
+	exp : exp . MUL exp 
+	exp : exp . DIVV exp 
+	exp : exp . MODD exp 
+	exp : exp . ORR exp 
+	exp : exp . ANDD exp 
+	exp : exp . LTT exp 
+	exp : exp . LEQQ exp 
+	exp : exp . EQQ exp 
+	exp : exp . GTT exp 
+	exp : exp . GEQQ exp 
+	exp : exp . NEQQ exp 
+
+	SCOLON	reduce by rule 18
+	PLUSS	reduce by rule 18
+	MINUSS	reduce by rule 18
+	MUL	shift 55
+	DIVV	shift 54
+	MODD	shift 53
+	RPAR	reduce by rule 18
+	ORR	reduce by rule 18
+	ANDD	shift 51
+	LTT	reduce by rule 18
+	LEQQ	reduce by rule 18
+	EQQ	reduce by rule 18
+	GTT	reduce by rule 18
+	GEQQ	reduce by rule 18
+	NEQQ	reduce by rule 18
+	THENN	reduce by rule 18
+	DOO	reduce by rule 18
+
+
+	.	error
+
+
+state 78:
+
+	exp : exp . PLUSS exp 
+	exp : exp PLUSS exp .  (reduce by rule 17)
+	exp : exp . MINUSS exp 
+	exp : exp . MUL exp 
+	exp : exp . DIVV exp 
+	exp : exp . MODD exp 
+	exp : exp . ORR exp 
+	exp : exp . ANDD exp 
+	exp : exp . LTT exp 
+	exp : exp . LEQQ exp 
+	exp : exp . EQQ exp 
+	exp : exp . GTT exp 
+	exp : exp . GEQQ exp 
+	exp : exp . NEQQ exp 
+
+	SCOLON	reduce by rule 17
+	PLUSS	reduce by rule 17
+	MINUSS	reduce by rule 17
+	MUL	shift 55
+	DIVV	shift 54
+	MODD	shift 53
+	RPAR	reduce by rule 17
+	ORR	reduce by rule 17
+	ANDD	shift 51
+	LTT	reduce by rule 17
+	LEQQ	reduce by rule 17
+	EQQ	reduce by rule 17
+	GTT	reduce by rule 17
+	GEQQ	reduce by rule 17
+	NEQQ	reduce by rule 17
+	THENN	reduce by rule 17
+	DOO	reduce by rule 17
+
+
+	.	error
+
+
+state 79:
+
+	exp : LPAR exp RPAR .  (reduce by rule 22)
+
+	SCOLON	reduce by rule 22
+	PLUSS	reduce by rule 22
+	MINUSS	reduce by rule 22
+	MUL	reduce by rule 22
+	DIVV	reduce by rule 22
+	MODD	reduce by rule 22
+	RPAR	reduce by rule 22
+	ORR	reduce by rule 22
+	ANDD	reduce by rule 22
+	LTT	reduce by rule 22
+	LEQQ	reduce by rule 22
+	EQQ	reduce by rule 22
+	GTT	reduce by rule 22
+	GEQQ	reduce by rule 22
+	NEQQ	reduce by rule 22
+	THENN	reduce by rule 22
+	DOO	reduce by rule 22
+
+
+	.	error
+
+
+state 80:
+
+	cmdd : IFF exp THENN LBRACE . cmds RBRACE ELSEE LBRACE cmds RBRACE ENDIFF 
+
+	IDE	shift 12
+	RBRACE	reduce by rule 10
+	READD	shift 19
+	WRITEE	shift 18
+	IFF	shift 17
+	WHILEE	shift 16
+
+	cmds	goto 82
+	cmdd	goto 14
+	variable	goto 13
+
+	.	error
+
+
+state 81:
+
+	cmdd : WHILEE exp DOO LBRACE cmds . RBRACE ENDWHH 
+
+	RBRACE	shift 83
+
+
+	.	error
+
+
+state 82:
+
+	cmdd : IFF exp THENN LBRACE cmds . RBRACE ELSEE LBRACE cmds RBRACE ENDIFF 
+
+	RBRACE	shift 84
+
+
+	.	error
+
+
+state 83:
+
+	cmdd : WHILEE exp DOO LBRACE cmds RBRACE . ENDWHH 
+
+	ENDWHH	shift 85
+
+
+	.	error
+
+
+state 84:
+
+	cmdd : IFF exp THENN LBRACE cmds RBRACE . ELSEE LBRACE cmds RBRACE ENDIFF 
+
+	ELSEE	shift 86
+
+
+	.	error
+
+
+state 85:
+
+	cmdd : WHILEE exp DOO LBRACE cmds RBRACE ENDWHH .  (reduce by rule 15)
+
+	SCOLON	reduce by rule 15
+
+
+	.	error
+
+
+state 86:
+
+	cmdd : IFF exp THENN LBRACE cmds RBRACE ELSEE . LBRACE cmds RBRACE ENDIFF 
+
+	LBRACE	shift 87
+
+
+	.	error
+
+
+state 87:
+
+	cmdd : IFF exp THENN LBRACE cmds RBRACE ELSEE LBRACE . cmds RBRACE ENDIFF 
+
+	IDE	shift 12
+	RBRACE	reduce by rule 10
+	READD	shift 19
+	WRITEE	shift 18
+	IFF	shift 17
+	WHILEE	shift 16
+
+	cmds	goto 88
+	cmdd	goto 14
+	variable	goto 13
+
+	.	error
+
+
+state 88:
+
+	cmdd : IFF exp THENN LBRACE cmds RBRACE ELSEE LBRACE cmds . RBRACE ENDIFF 
+
+	RBRACE	shift 89
+
+
+	.	error
+
+
+state 89:
+
+	cmdd : IFF exp THENN LBRACE cmds RBRACE ELSEE LBRACE cmds RBRACE . ENDIFF 
+
+	ENDIFF	shift 90
+
+
+	.	error
+
+
+state 90:
+
+	cmdd : IFF exp THENN LBRACE cmds RBRACE ELSEE LBRACE cmds RBRACE ENDIFF .  (reduce by rule 14)
+
+	SCOLON	reduce by rule 14
+
+
+	.	error
+
+
+state 91:
+
+
+	EOF	accept
+
+
+	.	error
+
+542 of 806 action table entries left after compaction
+87 goto table entries

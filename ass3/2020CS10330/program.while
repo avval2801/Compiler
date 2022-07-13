@@ -1,0 +1,9 @@
+program start ::
+var y, x, z: bool;
+var a, b, c : int;
+{
+    y := ff;
+    a := b +c;
+    if x>=y then {b:=~0;} else {c:=+9*~3;} endif;
+    while y do {a:=a%b;} endwh;
+}
